@@ -1,8 +1,12 @@
+//Requiring Sequelize
 const Sequelize = require('sequelize');
+//Including dotenv package
 require('dotenv').config();
 
+//Creating a connection to the db
 let sequelize;
 
+//Using JAWSDB_URL to deploy the App through Heroku
 if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
