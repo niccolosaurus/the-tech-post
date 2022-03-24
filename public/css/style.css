@@ -1,11 +1,15 @@
 * {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Poppins', sans-serif;
    }
   
-  header, .project:not(:last-child) {
+  header {
     border-bottom: 1px solid #ccc;
-    background-color: rgb(198, 230, 237);
-    color:black;
+    background-color: #97BFB4;
+    color: #F5EEDC;
+  }
+
+  body {
+    background-color: #F5EEDC;
   }
   
   .no-button {
@@ -27,11 +31,19 @@
   }
   
   .onepost {
-    background-color: #ccc;
+    background-color: #F5EEDC;
     padding: .5rem;
   }
   
   .comment {
     width: 50%;
     height: fit-content;
+  }
+
+  a {
+    color: #F5EEDC;
+  }
+
+  .text-color {
+    color: #DD4A48;
   }
