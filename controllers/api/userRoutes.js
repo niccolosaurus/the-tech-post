@@ -22,20 +22,21 @@ router.post('/login', async (req, res) => {
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password.' });
+        .json({ message: 'Incorrect email and/or password.' });
       return;
     }
-    const validPassword = await userData.checkPassword(req.body.password);
+    //maybe and await maybe not? VSCode said not an await function
+    const validPassword = userData.checkPassword(req.body.password);
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password.' });
+        .json({ message: 'Incorrect email and/or password.' });
       return;
     }
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      res.json({ user: userData, message: 'Logged In.' });
+      res.json({ user: userData, message: 'You have succesfully logged in.' });
     });
   } catch (err) {
     res.status(400).json(err);
