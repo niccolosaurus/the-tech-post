@@ -1,0 +1,10 @@
+[
+    {
+      "name": "First Blog Post",
+      "post_content": "Wow, I created my first blog post"
+    },
+    {
+        "name": "Second Blog Post",
+        "post_content": "I am getting better at this"
+    }
+]
