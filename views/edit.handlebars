@@ -1,21 +1,21 @@
 <div class="row mt-4">
   <div class="col-md-6">
     <h3>Edit Your Post</h3>
-    <p id="blog">{{id}}</p>
-    <form class="form new-blog-form">
+    <p id="Blog">{{id}}</p>
+    <form class="form new-Blog-form">
       <div class="form-group">
-        <label for="blog-name">Title: </label>
-        <input class="form-input" type="text" id="blog-name" name="blog-name" value={{name}} />
+        <label for="Blog-name">Title: </label>
+        <input class="form-input" type="text" id="Blog-name" name="Blog-name" value={{name}} />
       </div>
       <div class="form-group">
-        <label for="blog-desc">Entry</label>
-        <textarea class="form-input" id="blog-desc" name="blog-desc">{{post_content}}</textarea>
+        <label for="Blog-desc">Entry</label>
+        <textarea class="form-input" id="Blog-desc" name="Blog-desc">{{post_content}}</textarea>
       </div>
       <div class="form-group">
         <button id="submitIt" type="submit" class="btn btn-primary">Update</button>
       </div>
       <div class="col-md-4">
-        <button id="deleteIt" class="btn btn-sm btn-danger" data-id="{{id}}">DELETE</button>
+        <button id="deleteIt" class="btn btn-sm btn-danger" data-id="{{id}}">Delete</button>
       </div>
     </form>
   </div>
