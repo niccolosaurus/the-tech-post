@@ -4,14 +4,17 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    const blogData = await Blog.findAll({
+    // Get all posts and JOIN with user data
+    const postData = await Blog.findAll({
       include: User,
     });
 
-    const blogs = blogData.map((blog) => blog.get({ plain: true }));
+    // Serialize data so the template can read it
+    const posts = postData.map((post) => post.get({ plain: true }));
 
+    // Pass serialized data and session flag into template
     res.render('homepage', {
-      blogs,
+      posts: posts,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -19,9 +22,29 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/blog/:id', async (req, res) => {
+router.get('/dashboard', async (req, res) => {
   try {
-    const blogData = await Blog.findByPk(req.params.id, {
+    // Get all posts and JOIN with user data
+    const postData = await Blog.findAll({
+      include: User,
+    });
+
+    // Serialize data so the template can read it
+    const posts = postData.map((post) => post.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
+    res.render('dashboard', {
+      posts: posts,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/Blog/:id', async (req, res) => {
+  try {
+    const postData = await Blog.findByPk(req.params.id, {
       include: [
         User,
         {
@@ -31,10 +54,10 @@ router.get('/blog/:id', async (req, res) => {
       ],
     });
 
-    const blog = blogData.get({ plain: true });
+    const post = postData.get({ plain: true });
 
-    res.render('blog', {
-      ...blog,
+    res.render('Blog', {
+      ...post,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -44,7 +67,7 @@ router.get('/blog/:id', async (req, res) => {
 
 router.get('/edit/:id', async (req, res) => {
   try {
-    const blogData = await Blog.findByPk(req.params.id, {
+    const postData = await Blog.findByPk(req.params.id, {
       include: [
         User,
         {
@@ -54,10 +77,10 @@ router.get('/edit/:id', async (req, res) => {
       ]
     });
 
-    const blog = blogData.get({ plain: true });
-    console.log(blog)
+    const post = postData.get({ plain: true });
+    console.log(post)
     res.render('edit', {
-      ...blog,
+      ...post,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -65,23 +88,23 @@ router.get('/edit/:id', async (req, res) => {
   }
 });
 
-
-router.get('/blog', withAuth, async (req, res) => {
+// Use withAuth middleware to prevent access to route
+router.get('/Blog', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
     });
-    const username = req.session.user_id
+    const identity = req.session.user_id
     const user = userData.get({ plain: true });
-    const blogData = await Blog.findAll({
+    const postData = await Blog.findAll({
       where: {
-        user_id: username
+        user_id: identity
       }
     });
 
-    const blogs = blogData.map((blog) => blog.get({ plain: true }));
-    console.log(blogs)
+    const posts = postData.map((post) => post.get({ plain: true }));
+    console.log(posts)
     res.render('dashboard', {
-      blogs,
+      posts: posts,
       ...user,
       logged_in: req.session.logged_in
     });
@@ -91,6 +114,7 @@ router.get('/blog', withAuth, async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
     res.redirect('/dashboard');
     return;
@@ -103,18 +127,18 @@ router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
     });
-    const username = req.session.user_id
+    const identity = req.session.user_id
     const user = userData.get({ plain: true });
-    const blogData = await Blog.findAll({
+    const postData = await Blog.findAll({
       where: {
-        user_id: username
+        user_id: identity
       }
     });
 
-    const blogs = blogData.map((blog) => blog.get({ plain: true }));
-    console.log(blogs)
+    const posts = postData.map((post) => post.get({ plain: true }));
+    console.log(posts)
     res.render('dashboard', {
-      blogentries: blogs,
+      blogentries: posts,
       ...user,
       logged_in: req.session.logged_in
     });
