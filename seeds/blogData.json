@@ -1,10 +1,6 @@
 [
-    {
-      "name": "First Blog Post",
-      "post_content": "Wow, I created my first blog post"
-    },
-    {
-        "name": "Second Blog Post",
-        "post_content": "I am getting better at this"
-    }
+  {
+    "name": "WELCOME TO THE TECH POST",
+    "post_content": "Type away, create some blogs, have fun."
+  }
 ]
