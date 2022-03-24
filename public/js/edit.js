@@ -1,12 +1,12 @@
 const newBlogPost = async (event) => {
     event.preventDefault();
 
-    const id = document.getElementById('blog').innerHTML
-    const name = document.querySelector('#blog-name').value.trim();
-    const post_content = document.getElementById('blog-desc').value.trim();
+    const id = document.getElementById('Blog').innerHTML
+    const name = document.querySelector('#Blog-name').value.trim();
+    const post_content = document.getElementById('Blog-desc').value.trim();
 
     if (name && post_content) {
-        const response = await fetch(`/api/blog/edit/${id}`, {
+        const response = await fetch(`/api/Blog/edit/${id}`, {
             method: 'POST',
             body: JSON.stringify({ id, name, post_content }),
             headers: { 'Content-Type': 'application/json' },
@@ -14,21 +14,21 @@ const newBlogPost = async (event) => {
         if (response.ok) {
             document.location.replace('/');
         } else {
-            alert("Has not been created.");
+            alert("No Blog post created.");
         }
     }
 };
 
-const delButtonHandler = async (event) => {
+const deleteButton = async (event) => {
     if (event.target.getAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
-        const response = await fetch(`/api/blog/${id}`, {
+        const response = await fetch(`/api/Blog/${id}`, {
             method: 'DELETE',
         });
         if (response.ok) {
-            document.location.replace('/blog');
+            document.location.replace('/Blog');
         } else {
-            alert("Can't delete.");
+            alert("Could not delete the post.");
         }
     }
 };
@@ -39,4 +39,4 @@ document
   
   document
     .querySelector('#deleteIt')
-    .addEventListener('click', delButtonHandler);
+    .addEventListener('click', deleteButton);
