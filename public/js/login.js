@@ -14,7 +14,7 @@ const loginFunction = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/Blog');
+      document.location.replace('/blog');
     } else {
       alert(response.statusText);
     }
