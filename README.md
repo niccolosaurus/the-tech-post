@@ -41,6 +41,6 @@ n/a
 
 ### Questions
 [Github Profie](https://github.com/niccolosaurus)</br>
-
+https://niccostechblog.herokuapp.com/</br>
 nicco.eck@gmail.com</br>
 
