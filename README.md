@@ -11,6 +11,7 @@ It is a blog site that allows you to create and edit posts as well as leave comm
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
+- [Pictures](#pictures)
 - [License](#license)
 - [Contribution](#contribution)
 - [Test Instructions](#test-instructions)
@@ -19,10 +20,12 @@ It is a blog site that allows you to create and edit posts as well as leave comm
 
 
 ### Installation
-You can download or clone the repository.  Once you have access then npm install all the packages and npm run seed.  Finally you can npm start and that will load up the site, you can access by using a localhost on a web browser.
+Clone or download the repo.</br> You will also need to install and download node.js and Insomnia to run and test the program.
 
 ### Usage
+Run npm install in node.</br>  Log into mysql and source db/schema.sql.</br>  Run npm seed in node.</br> Run npm start or node server.js in your node terminal.</br> Then check your routes via your favorite browser or Insomnia. 
 
+### Pictures
 ![Homepage](./public/pics/homepage.PNG)
 
 ### License
