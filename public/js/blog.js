@@ -35,6 +35,6 @@ document
   .querySelector('.new-Blog-form')
   .addEventListener('submit', newBlogPost);
 
-document
-  .querySelector('.delete-entry')
-  .addEventListener('click', deleteButton);
+// document
+//   .querySelector('.delete-entry')
+//   .addEventListener('click', deleteButton);
